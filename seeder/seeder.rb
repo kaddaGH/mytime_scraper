@@ -3,7 +3,7 @@ require 'uri'
 pages << {
     page_type: 'products_listing',
     method: 'GET',
-    url: "https://www.mytime.de/Getraenke/Wasser_und_Erfrischungsgetraenke/Energy_Drinks_210002705.html",
+    url: "https://www.mytime.de/Getraenke/Wasser_und_Erfrischungsgetraenke/Energy_Drinks_210002705.html?page=1",
     vars: {
         'input_type' => 'taxonomy',
         'search_term' => '-',
@@ -15,11 +15,11 @@ pages << {
 
 search_terms = ["Red Bull", "RedBull", "Energy Drink", "Energy Drinks"]
 search_terms.each do |search_term|
-
+break 
   pages << {
       page_type: 'products_listing',
       method: 'GET',
-      url: "https://www.mytime.de/search?query=#{URI.encode(search_term)}",
+      url: "https://www.mytime.de/search?page=1&query=#{URI.encode(search_term)}",
       vars: {
           'input_type' => 'search',
           'search_term' => search_term,

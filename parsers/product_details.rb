@@ -18,8 +18,8 @@ description = body.css("meta[@property='og:description']").attr("content")
 image_url = body.css(".gallery__slider__img").attr("src")
 
 price = body.css("meta[@property='product:price:amount']").attr("content")
-rating = body.css(".starbar__star--active").length
-review = body.at(".starbar__counter").to_i
+rating = body.at_css(".starbar").css(".starbar__star--active").length
+review = body.at(".starbar__counter").text[/\d+/]
 
 item_size = nil
 uom = nil

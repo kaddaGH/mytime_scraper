@@ -13,7 +13,7 @@ category = body.css("meta[@property='product:category']").attr("content")
 brand = body.css("meta[@property='product:brand']").attr("content")
 
 
-description = body.css("meta[@property='og:description']").attr("content").text.gsub(/,/,' ')
+description = body.css("meta[@property='og:description']").attr("content").text.gsub(/[\s\n,]+/,' ')
 
 image_url = body.css(".gallery__slider__img").attr("src")
 

@@ -13,11 +13,11 @@ category = body.css("meta[@property='product:category']").attr("content")
 brand = body.css("meta[@property='product:brand']").attr("content")
 
 
-description = body.css("meta[@property='og:description']").attr("content")
+description = body.css("meta[@property='og:description']").attr("content").text.gsub(/,/,' ')
 
 image_url = body.css(".gallery__slider__img").attr("src")
 
-price = body.css("meta[@property='product:price:amount']").attr("content")
+price = body.css("meta[@property='product:price:amount']").attr("content").text.gsub(/,/,'.')
 rating = body.at_css(".starbar").css(".starbar__star--active").length
 review = body.at(".starbar__counter").text[/\d+/] rescue "0"
 
@@ -53,6 +53,10 @@ in_pack = nil
   uom = $2
 
   break item_size, uom if item_size && uom
+end
+
+unless item_size.nil?
+  item_size=item_size.gsub(/,/,'.')
 end
 
 [title,description].each do |size_text|
